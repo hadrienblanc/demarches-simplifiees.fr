@@ -114,8 +114,9 @@ class PiecesJustificativesService
 
     procedure = dossiers.first.procedure
     tdc_by_id = TypeDeChamp
-      .joins(:revisions)
-      .where(revisions: { id: procedure.revisions })
+      .joins(:revision_type_de_champ)
+      .where(revision_type_de_champ: { revision: procedure.revisions })
+      .distinct
       .to_a
       .group_by(&:id)
 
