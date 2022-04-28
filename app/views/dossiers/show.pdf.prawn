@@ -208,7 +208,7 @@ end
 
 prawn_document(page_size: "A4") do |pdf|
   @procedure ||= @dossier.procedure
-  @tdc_by_id ||= @dossier.champs.map(&:type_de_champ).group_by(&:id)
+  @tdc_by_id ||= @dossier.revision.types_de_champ.group_by(&:id)
 
   pdf.font_families.update( 'marianne' => {
     normal: Rails.root.join('lib/prawn/fonts/marianne/marianne-regular.ttf' ),
