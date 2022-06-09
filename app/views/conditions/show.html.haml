@@ -1,0 +1,11 @@
+.container
+  %h1 conditions
+  - tdcs = @procedure.draft_types_de_champ
+  - tdcs.each.with_index do |tdc, i|
+    = form_with model: tdc, url: condition_path do |f|
+      .mt-4.mb-4
+        = f.hidden_field :id
+        = f.text_field :libelle
+        = render(TypesDeChamp::ConditionsComponent.new(condition: tdc.condition, upper_tdcs: tdcs.take(i), procedure_id: @procedure.id))
+
+      = f.button 'save'
