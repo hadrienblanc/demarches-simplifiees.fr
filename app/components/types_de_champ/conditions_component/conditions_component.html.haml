@@ -1,0 +1,31 @@
+:css
+  .conditionnel { background-color: #ececfe; padding: 8px; } 
+  .condition-table th { text-align: left; padding: 8px; }
+  .condition-table td { padding: 8px; }
+
+.conditionnel.mt-2
+  %div{ style: 'display: flex; justify-content: flex-end'}
+    %p.mr-2 Logique conditionnelle
+    = logic_conditionnel_button
+
+  - if @condition.present?
+    %table.condition-table.mt-2
+      %thead
+        %tr
+          %th
+          %th Champ
+          %th Fonction
+          %th Valeur
+          %th
+      %tbody
+        - rows.each.with_index do |(targeted_champ, operator_name, value, condition), i|
+          %tr
+            %td= left_tag(i)
+            %td= select_tag 'type_de_champ[condition_form][rows][][targeted_champ]', options_for_select(available_targets, targeted_champ.to_json), onchange: "this.form.action = this.form.action + '/change_champ?row_index=#{i}'; this.form.submit()"
+            %td= select_tag 'type_de_champ[condition_form][rows][][operator_name]', options_for_select(available_operators(targeted_champ), operator_name)
+            %td= right_input(targeted_champ, value)
+            %td
+              %input{ type: 'submit', value: '🗑', formaction:delete_row_condition_path(45694, row_index: i) }
+
+    %div{ style: 'display: flex; justify-content: flex-end'}
+      %input{ type: 'submit', value: 'Ajouter une condition', formaction: add_row_condition_path(45694) }

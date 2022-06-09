@@ -1,0 +1,8 @@
+---
+fr:
+  <: Inférieur à
+  <=: Inférieur ou égal à
+  ==: Équal à
+  '>=': Supérieur ou égal à
+  '>': Supérieur à
+
