@@ -1,2 +1,4 @@
 ---
 fr:
+  max_file_size: "Taille maximale : %{max_file_size}."
+  list_all_format: "Formats supportés : %{formats}"

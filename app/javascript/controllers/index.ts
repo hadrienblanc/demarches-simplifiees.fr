@@ -13,6 +13,7 @@ import { TurboEventController } from './turbo_event_controller';
 import { TurboInputController } from './turbo_input_controller';
 import { TurboPollController } from './turbo_poll_controller';
 import { TypeDeChampEditorController } from './type_de_champ_editor_controller';
+import { EllipsisableController } from './ellipsisable_controller';
 
 const Stimulus = Application.start();
 Stimulus.register('autofocus', AutofocusController);
